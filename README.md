@@ -1,7 +1,9 @@
 
-# Configuration Publisher
+# Configuration Publishers - Subscribers
 
-The Configuration Publisher is a simple server that listens for configuration updates and publishes them to a Redis server. This allows other services using the same Redis server to receive the latest configuration updates seamlessly.
+The Configuration Pub-Sub concept is a simple server that listens for configuration updates and publishes them to a Redis server. This allows other services using the same Redis server to receive the latest configuration updates seamlessly.
+
+
 
 ## Install Redis
 
@@ -41,12 +43,10 @@ redis-server
 
 ## Usage
 
-### Install Rust
-
-To install Rust, execute the following command:
+### Requirements
 
 ```bash
-curl https://sh.rustup.rs -sSf | sh
+pip install redis
 ```
 
 ### Edit Configuration
@@ -58,21 +58,14 @@ Edit the `config.cfg` file according to your configuration requirements.
 To publish the configuration, use the following command:
 
 ```bash
-cargo run
+python publisher.py
 ```
 
 ### Check Configuration Using a Python Subscriber
 
 To check the configuration using a Python subscriber, follow these steps:
 
-1. Install the Redis Python package:
-
-    ```bash
-    pip install redis
-    ```
-
-2. Run the example subscriber script:
-
-    ```bash
-    python example_subscriber.py
-    ```
+```bash
+python subscriber.py
+python publisher.py
+```
